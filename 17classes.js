@@ -27,4 +27,40 @@ The constructor runs with the given argument and assigns it to this.name.
 then we can call object methods, such as user.sayHi().
 */
 
-// class is a “syntactic sugar” (syntax that is designed to make things easier to read, but doesn’t introduce anything new), because we could actually declare the same thing using constructor function and adding method to that functions prototype
+// class is a “syntactic sugar” (syntax that is designed to make things easier to read, but doesn’t introduce anything new), because we could actually declare the same thing using constructor function and adding method to that functions prototype (but its not entirely the same there are some differences)
+
+//First, a function created by class is labelled by a special internal property [[IsClassConstructor]]: true
+//Second, unlike a regular function, it must be called with new:
+//Third, Class methods are non-enumerable. A class definition sets enumerable flag to false for all methods in the "prototype".
+//Fourth, Classes always use strict. All code inside the class construct is automatically in strict mode.
+
+// Class Expression
+//Just like functions, classes can be defined inside another expression, passed around, returned, assigned, etc.
+let Student = class{}// class expression
+let Customer = class Admin{}// named class expression(the name is visible inside the class only)
+
+//'on-demand' class
+function makeClass(phrase){
+  return class {
+    sayHi(){
+      console.log(phrase)
+    }
+  }
+}
+let Admin = makeClass('I am admin')
+new Admin().sayHi()
+
+//Getters/Setters
+class Country{
+  constructor(name){
+    this.name = name
+  }
+  get name(){
+    return this._name;
+  }
+  set name(value){
+    this._name = value;
+  }
+}
+let country = new Country('India')
+console.log(country._name)
