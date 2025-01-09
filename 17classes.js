@@ -63,4 +63,42 @@ class Country{
   }
 }
 let country = new Country('India')
-console.log(country._name)
+country.name = 'China'
+
+// class fields
+// Class fields in JavaScript are a concise and readable way to define properties directly within a class
+class Sports{
+  name='Soccer' //initial value
+  getSport(){
+    console.log('Todays sports is, ',this.name)
+  }
+  get name(){
+    return this._name
+  }
+  set name(value){
+    this._name = value
+  }
+}
+const sports = new Sports();
+sports.getSport()
+sports.name = 'Cricket'
+console.log(sports.name)
+sports.getSport()
+
+class Sports2{
+  constructor(value){
+    this.value = value;
+  }
+  getSport(){
+    console.log('today sports ,',this.value)
+  }
+}
+
+let sports2 = new Sports2('Basketball')
+setTimeout(sports2.getSport.bind(sports2),2000)// one way to bind with sports
+//second way using arrow function using getSport as a arrow function.an arrow function for the click method (click = () => {...}). Arrow functions have a unique property called lexical this. This means they capture the this value from their surrounding scope at the time of definition, not at the time of invocation
+
+
+//setTimeout (and setInterval) are functions provided by the browser (or Node.js environment). They are designed to execute a function later, after a specified delay. However, when you pass a method directly to setTimeout
+//setTimeout(sports2.getSport, 2000);
+//What actually happens is that setTimeout receives a reference to the getSport function, not the method bound to the sports2 object. When the timer expires and getSport is finally executed by setTimeout, it is called as a regular function, not as a method of sports2

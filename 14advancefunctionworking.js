@@ -643,3 +643,12 @@ Do not have this
 Do not have arguments
 Can’t be called with new
  */
+
+/*
+. Use call() when you want to immediately call a function with a specific this value and you know the number of arguments.
+
+. Use apply() when you want to immediately call a function with a specific this value and the arguments are in an array (or array-like object). This is particularly useful when you don't know the number of arguments beforehand (e.g., when using Math.max or Math.min with an array of numbers).
+
+. Use bind() when you want to create a new function with a permanently bound this value that you can call later. This is essential for event handlers, setTimeout/setInterval, and other situations where you need to preserve the this context.
+
+*/
