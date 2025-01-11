@@ -102,3 +102,31 @@ setTimeout(sports2.getSport.bind(sports2),2000)// one way to bind with sports
 //setTimeout (and setInterval) are functions provided by the browser (or Node.js environment). They are designed to execute a function later, after a specified delay. However, when you pass a method directly to setTimeout
 //setTimeout(sports2.getSport, 2000);
 //What actually happens is that setTimeout receives a reference to the getSport function, not the method bound to the sports2 object. When the timer expires and getSport is finally executed by setTimeout, it is called as a regular function, not as a method of sports2
+
+// Class Inheritance
+
+// Class inheritance is a way for one class to extend another class.
+
+class Movie{
+  constructor(name){
+    this.runTime = 0;
+    this.name=name;
+  }
+  time(value){
+    this.runTime = value;
+  }
+  movie(){
+    console.log(`${this.name} has a runtime of ${this.runTime} minutes`)
+  }
+}
+
+const mov = new Movie("The Dark Knight Rises")
+mov.time(190);
+mov.movie()
+
+
+//Internally, extends keyword works using the good old prototype mechanics. It sets Rabbit.prototype.[[Prototype]] to Animal.prototype
+class Anime extends Movie{
+
+}
+//Class syntax allows to specify not just a class, but any expression after extends be it a function call that generates the parent class
